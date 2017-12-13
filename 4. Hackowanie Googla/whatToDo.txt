@@ -1,0 +1,15 @@
+
+1) Zrób formularz z 1 polem i przyciskiem szukaj
+2) Po wypełnieniu formularza pobierz wyniki z api googla
+3) Wyniki wypisz w liście, którą zrobisz pod formularzem.
+
+https://developers.google.com/books/docs/v1/using#WorkingVolumes
+
+W wynikach pokaż:
+[
+tytuł książki: tytuł
+autor : autor
+liczba stron: 300
+link do podglądu na googlu : <a href> 
+]
+

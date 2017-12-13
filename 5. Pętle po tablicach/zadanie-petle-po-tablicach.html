@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            /*
+            Polacz sie z adresem http://domanart.pl/CODERS/zagadki/tablice-es6/dane.json
+            i pobierz z niego json (nic nie wysylaj).
+            Jest tam tablica userów.
+
+            Twoim zadaniem jest wypisać w konsoli poniższe rzeczy.
+            Użyj odpowiednich metod dla tablic. Użyj jak najkrótszego zapisu.
+            Nie używaj var i for.
+
+            Skorzystaj z instrukcji:
+            console.group("Nazwa grupy")
+            console.log(....)
+            console.groupEnd();
+            do pogrupowania treści w konsoli
+
+            Wypisz w konsoli:
+            -----------------
+            - tekst: "Wszyscy użytkownicy"
+            - tablicę z wszystkimi użytkownikami
+
+            - tekst: "Wszyscy uzytkownicy pelnoletni:"
+            - tablicę z wszystkimi uzytkownikami pelnoletnimi
+
+            - tekst: "Wszystkie kobiety:"
+            - tablicę z wszystkimi kobietami
+
+            - tekst: "Uzytkownicy z tagiem "dolor":
+            - tablicę użytkowników którzy mają tag "dolor"
+
+            - tekst: "Wszyscy uzytkownicy są pełnoletni:"
+            - prawda/falsz
+
+            - tekst: "Niektórzy uzytkownicy są pełnoletni:"
+            - prawda/falsz
+
+            - tekst: "Wszyscy uzytkownicy pisani duzymi literami:"
+            - nowa tablicę z nazwami użytkowników zamienionymi by byly pisanymi dużymi literami
+            */
+
+            const apiUrl = 'http://domanart.pl/CODERS/zagadki/tablice-es6/dane.json';
+
+            $.ajax({
+              url: apiUrl,
+              method: 'get',
+              dataType: 'json'
+            }).done(function(data) {
+              
+            console.group("---- Check ----")
+            console.log ( data );
+            console.groupEnd();
+
+            console.group("---- Wszyscy użytkownicy ----")
+            data.users.forEach(function(el) {
+                console.log ( el );    
+            });
+            console.groupEnd();
+
+            console.group("---- Wszyscy uzytkownicy pelnoletni: ----")
+            var userMatur = data.users.filter(function(el) {
+            return el.age >=18;
+            });
+            console.log ( userMatur );
+            console.groupEnd();
+
+            console.group("---- Wszystkie kobiety: ----")
+            var women = data.users.filter(function(el) {
+            return el.gender === 'female';
+            });
+            console.log ( women );
+            console.groupEnd();
+
+            console.group('---- "Uzytkownicy z tagiem "dolor" ----')
+            var dolors = data.users.filter(function(el) {
+            
+                var dolorsUser = el.tags.some( function(tags){
+                    return tags === 'dolor';
+                });
+                return dolorsUser;
+                 
+            });
+            console.log ( dolors );
+            console.groupEnd();
+
+
+            console.group('---- "Wszyscy uzytkownicy są pełnoletni: ----')
+            var allMatured = data.users.every(function(el) {
+                return el.age >= 18;
+                 
+            });
+            console.log ( allMatured );
+            console.groupEnd();
+
+
+            console.group('---- Niektórzy uzytkownicy są pełnoletni: ----')
+            var anyMatured = data.users.some(function(el) {
+                return el.age >= 18;
+                 
+            });
+            console.log ( anyMatured );
+            console.groupEnd();
+
+
+            console.group('---- Wszyscy uzytkownicy pisani duzymi literami: ----')
+            var upperCase = data.users.map(function(el) {
+                return el.name.toUpperCase();
+                 
+            });
+            console.log ( upperCase );
+            console.groupEnd();
+
+
+              
+            })
+            
+    
+
+
+
+
+
+        </script>
+    </body>
+</html>
