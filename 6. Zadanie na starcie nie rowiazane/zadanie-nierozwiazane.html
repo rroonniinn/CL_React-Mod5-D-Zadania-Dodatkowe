@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <button id="btnBig">Duże imiona</button>
+        <button id="btnSmall">Małe imiona</button>
+    </div>
+
+    <!--
+    Napisz obiekt, który będzie miał:
+
+    - właściwość friends, która będzie tablicą kilku przyjaciół np.
+
+    friends : [
+        {name : "Alicja", gender: "w"},
+        {name : "Piotr", gender: "m"},
+        {name : "Beata", gender: "w"},
+        {name : "Bartek", gender: "m"},
+        {name : "Karol", gender: "m"},
+        {name : "Monika", gender: "w"}
+    ]
+
+    - metodę showSmallFriends, która wyświetli KOLEJNO w konsoli imiona friends pisane małymi literami
+    - metodę showBigFriends, która wyświetli KOLEJNO w konsoli imiona friends pisane dużymi literami
+
+    - metodę bindBtns, która podepnie pod przyciski na stronie metody:
+        - #btnBig -> odpali się metoda showBigFriends
+        - #btnSmall -> odpali się metoda showSmallFriends
+    -->
+
+    <script>
+
+    
+        const ob = {
+            friends : [
+                {name : "Alicja", gender: "w"},
+                {name : "Piotr", gender: "m"},
+                {name : "Beata", gender: "w"},
+                {name : "Bartek", gender: "m"},
+                {name : "Karol", gender: "m"},
+                {name : "Monika", gender: "w"}
+            ],
+            
+            showSmallFriends : function () {
+                let tabS = [];            
+                ob.friends.forEach((el) => {                
+                    tabS.push (el.name.toLowerCase());                
+                }); 
+                tabS.sort();
+                console.log ( tabS ); 
+            },
+
+            showBigFriends : function () {
+                let tabB = [];            
+                ob.friends.forEach((el) => {                
+                    tabB.push (el.name.toUpperCase());                
+                }); 
+                tabB.sort();
+                console.log ( tabB ); 
+            },
+            binBtns : function(){
+                let btnShowSmall = document.querySelector('#btnSmall');
+                let btnShowBig = document.querySelector('#btnBig');
+                
+
+                // Używając funkcji strzałkowych that wskazuje na obiekt a nie na event (mniej więcej)
+                btnShowBig.addEventListener('click', () => {
+                    this.showBigFriends();
+                })
+                
+                btnShowSmall.addEventListener('click', () => {
+                    this.showSmallFriends();
+                })
+
+            }
+
+        }
+
+        
+        ob.binBtns();
+
+        
+
+    </script>
+</body>
+</html>
+
