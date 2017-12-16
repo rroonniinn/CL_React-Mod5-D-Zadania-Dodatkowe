@@ -1,0 +1,86 @@
+.main-hero {
+    $color1 : rgba(black, 0.8);
+    $color2 : rgba(black, 0.9);
+
+    height:100vh;
+    min-height:900px;
+    background-color: #E3E3E3;
+    background-image:
+        linear-gradient(-45deg, $color1 0%, $color1 25%, $color2 25%, $color2 50%, $color1 50%, $color1 75%, $color2 75%, $color2 100%),
+        url(../images/main-banner.jpg);
+    background-size:6px 6px, auto 100%;
+    background-position: center bottom;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+.main-hero > .container {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+
+.main-hero-bottom {
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:51px;
+    overflow: hidden;
+}
+.main-hero-bottom span {
+    background: url(../images/banner-bottom.svg);
+    width: 262px;
+    height: 51px;
+    display: block;
+    margin:0 auto;
+}
+.main-hero-bottom:before {
+    content:'';
+    height:100%;
+    width: 999999px;
+    background: #fff;
+    position: absolute;
+    right:50%;
+    margin-right:100px;
+    top:0;
+}
+.main-hero-bottom:after {
+    content:'';
+    height:100%;
+    width: 999999px;
+    background: #fff;
+    position: absolute;
+    left:50%;
+    margin-left:100px;
+    top:0;
+}
+
+
+.main-hero-scroll {
+    width:25px;
+    height:45px;
+    border: 1px solid rgba(#fff, 0.8);
+    border-radius: 13px;
+    position: absolute;
+    left:50%;
+    bottom:90px;
+    transform: translateX(-50%);
+}
+.main-hero-scroll:after {
+    content:'';
+    width:6px;
+    height:6px;
+    background: rgba(#fff, 0.8);
+    border-radius: 50%;
+    position: absolute;
+    left:50%;
+    top:10px;
+    transform: translateX(-50%);
+    animation: mainBannerScrollAnim 0.6s 0s infinite alternate;
+}
+
+@keyframes mainBannerScrollAnim {
+    0% {top:10px;}
+    100% {top:28px;}
+}

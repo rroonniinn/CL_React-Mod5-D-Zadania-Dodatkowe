@@ -1,0 +1,100 @@
+.main-paralax {
+    $color : rgba(#333, 0.7);
+
+    height:510px;
+    background:
+        linear-gradient(90deg, $color 0%, $color 100%),
+        url(../images/banner-paralax.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.main-paralax-title {
+    font-size:60px;
+    text-transform: uppercase;
+    color:#fff;
+    font-family : "Poiret One", sans-serif;
+    font-weight:normal;
+    margin:0;
+    text-align: center;
+}
+.main-paralax-title span {
+    color: $colorPrimary;
+
+}
+.main-paralax-text {
+    font-size:19px;
+    color:rgba(white, 0.35);
+    text-align: center;
+    margin-top:15px;
+    max-width:840px;
+}
+
+.main-paralax-slides-cnt {
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+
+}
+.main-paralax-slide {
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main-paralax-prev {
+    position: absolute;
+    bottom:20px;
+    left:50%;
+    transform: translate(-110%, 0);
+    z-index: 1;
+    // display: none;
+}
+.main-paralax-next {
+    position: absolute;
+    bottom:20px;
+    left:50%;
+    transform: translate(10%, 0);
+    z-index: 1;
+    // display: none;
+}
+
+
+/* animacje, stany sladjów */
+.main-paralax-slide {
+    opacity:0;
+    transition: 1s all;
+}
+.main-paralax-title {
+    transform: scale(0.5);
+    opacity:0;
+    transition: 1s 0.5s all;
+}
+.main-paralax-text {
+    transform: scale(0.5);
+    opacity:0;
+    transition: 1s 1s all;
+}
+
+.main-paralax-slide.active {
+    opacity:1;
+}
+.main-paralax-slide.active .main-paralax-title {
+    opacity:1;
+    transform: scale(1);
+}
+.main-paralax-slide.active .main-paralax-text {
+    opacity:1;
+    transform: scale(1);
+}

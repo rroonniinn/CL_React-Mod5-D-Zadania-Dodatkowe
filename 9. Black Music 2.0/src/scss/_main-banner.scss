@@ -1,0 +1,113 @@
+//---------------------------------
+// main banner
+//---------------------------------
+.main-banner {
+    flex-grow:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main-banner-title {}
+.main-banner-text {
+    font-size:19px;
+    color:rgba(white, 0.35);
+    text-align: center;
+    margin:65px 0;
+    max-width:840px;
+}
+.main-banner-btn {
+    display: inline-block;
+    padding:20px 45px;
+    color:white;
+    border:1px solid white;
+    background: rgba(white, 0.05);
+    border-radius: 30px;
+    font-size:16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.5s all;
+}
+.main-banner-btn:hover {
+    background: $colorPrimary;
+    border-color: $colorPrimary;
+    color: #333;
+}
+
+.main-banner-title svg {
+    width:1200px;
+}
+
+$lengths : 270 310 375 330 260 465 330 705 400 360 180 370;
+
+.main-banner-title .st0 {
+    fill:none;
+    fill-opacity:0;}
+
+@for $i from 1 through 12 {
+    .main-banner-title .st#{$i} {
+        stroke-dasharray: nth($lengths, $i);
+        @if ($i<=7) {
+            stroke: $colorPrimary;
+            fill: $colorPrimary;
+        } @else {
+            stroke: #fff;
+            fill: #fff;
+        }
+        stroke-dashoffset:nth($lengths, $i);
+
+        $delay : (0.3 * $i) * 1s;
+        $fillDelay : (12 * 0.3 + 0.5) * 1s;
+        animation:
+            animMainBannerStroke 0.5s $delay 1 linear forwards,
+            animMainBannerTitleFill 1s $fillDelay 1 linear forwards;
+    }
+}
+
+@keyframes animMainBannerStroke {
+    100% {stroke-dashoffset:0;}
+}
+@keyframes animMainBannerTitleFill {
+    100% {fill-opacity:0.8;}
+}
+
+@media (max-width:1250px) {
+    .main-banner-title svg {
+        width:1000px;
+    }
+}
+
+@media (max-width:1000px) {
+    .main-banner-title svg {
+        width:900px;
+    }
+}
+
+@media (max-width:950px) {
+    .main-banner-title svg {
+        width:800px;
+    }
+}
+
+@media (max-width:810px) {
+    .main-banner-title svg {
+        width:600px;
+    }
+}
+
+@media (max-width:670px) {
+    .main-banner-title svg {
+        width:500px;
+    }
+}
+@media (max-width:570px) {
+    .main-banner-title svg {
+        width:400px;
+    }
+}
+@media (max-width:450px) {
+    .main-banner-title svg {
+        width:300px;
+    }
+}
