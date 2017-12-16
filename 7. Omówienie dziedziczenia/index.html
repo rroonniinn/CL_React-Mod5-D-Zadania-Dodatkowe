@@ -1,0 +1,84 @@
+//KLASY
+<script>
+        /*
+        //WERSJA ES5
+        
+        //tworzymy konstruktor Human
+        var Human = function(name) {
+            this.name = name;
+        }
+        Human.prototype.sayName = function() {
+            return this.name;
+        }
+
+        var h = new Human("Bartek");
+
+        console.dir(h);
+
+
+        //tworzymy konstruktor Woman
+        var Woman = function(name) {
+            //bierzemy kod z konstruktora Human
+            //tak jak tutaj bysmy napisali Human() (ale ten zapis nie zadziala dlatego uzywamy call)
+            Human.call(this, name);
+            this.eyes = "ladne";
+        }
+
+        //podpinamy pod Woman prototyp na bazie Human
+        //dzieki temu Woman bedzie mogla dodawac swoje metody ktore beda tylko dla niej
+        //jak Human doda metode, bedzie ona dostepna dla Human i Woman
+        //czyli dziedziczenie dziala w dol Human->Woman
+        Woman.prototype = Object.create(Human.prototype);
+        Woman.prototype.constructor = Woman;
+
+        var w = new Woman("Monika");
+        console.dir(w);
+
+        console.log(w.sayName());
+
+        Woman.prototype.bornChild = function() {
+            console.log('Urodzilam ladne dziecko');
+        }
+
+        Woman.prototype.sayName = function() {
+            //tutaj bierzemy kod z takiej samej metody w Human
+            var name = Human.prototype.sayName.call(this)
+            return name + ' jestem kobieta';
+        }
+
+        // console.log(h.sayName());
+        // console.log(w.sayName());
+        */
+
+
+        //WERSJA ES6
+        class Human {
+            constructor(name) {
+                this.name = name;
+            }
+
+            sayName() {
+                return this.name;
+            }
+        }
+
+        class Woman extends Human {
+            constructor(name) {
+                super(name);
+                this.eyes = "ladne";
+            }
+            sayName() {
+                var name = super.sayName();
+                return name + ' jestem kobieta';
+            }
+        }
+
+        var h = new Human("Bartek");
+        console.log(h.sayName());
+
+        var w = new Woman("Monika");
+        console.log(w.sayName());
+
+
+
+    </script>
